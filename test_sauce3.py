@@ -20,6 +20,9 @@ class Test_Login:
     def teardown_method(self):
         self.driver.quit()
 
+    def waitForElementVisible(self,locator,timeout=5):
+        return WebDriverWait(self.driver,timeout).until(ec.visibility_of_element_located(locator))
+
     def login_info(self,username,password):
         usernameInput = self.waitForElementVisible((By.ID, username_id))
         passwordInput = self.waitForElementVisible((By.ID, password_id))
@@ -27,9 +30,6 @@ class Test_Login:
         passwordInput.send_keys(password)
         loginButton = self.waitForElementVisible((By.ID, login_button_id))
         loginButton.click()
-
-    def waitForElementVisible(self,locator,timeout=5):
-        return WebDriverWait(self.driver,timeout).until(ec.visibility_of_element_located(locator))
 
     def readInvalidDataFromExcel():
         excelFile= openpyxl.load_workbook("data/invalidLogin.xlsx")
