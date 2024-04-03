@@ -20,7 +20,7 @@ class TestAddToCart():
   
   def test_addToCart(self):
     self.driver.get("https://www.saucedemo.com/")
-    self.driver.set_window_size(1552, 832)
+    self.driver.maximize_window()
     self.driver.find_element(By.ID, "user-name").click()
     self.driver.find_element(By.ID, "user-name").send_keys("standard_user")
     self.driver.find_element(By.ID, "password").click()
